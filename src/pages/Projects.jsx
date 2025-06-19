@@ -135,7 +135,7 @@ function Projects() {
         </div>
         <div
           ref={circleRef}
-          className="hidden md:fixed top-0 left-0 w-[350px] h-[400px] overflow-hidden px-5 py-20 bg-slate-400 z-[1000] pointer-events-none opacity-0 scale-[0.1] cursor-pointer"
+          className="fixed top-0 left-0 w-[350px] h-[400px] overflow-hidden px-5 py-20 bg-slate-400 z-[1000] pointer-events-none opacity-0 scale-[0.1] cursor-pointer"
         >
           <div
             ref={imageSliderRef}
