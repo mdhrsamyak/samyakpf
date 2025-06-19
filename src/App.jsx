@@ -1,4 +1,5 @@
 import "./App.css";
+import SnakeGame from "./components/SnakeGame";
 import SplashCursor from "./components/SplashCursor";
 import Contact from "./pages/Contact";
 
@@ -15,6 +16,7 @@ function App() {
         <Sidebar />
         <HomePage />
         <Projects />
+        {/* <SnakeGame /> */}
         <Contact />
         <Footer />
       </div>

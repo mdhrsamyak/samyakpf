@@ -9,8 +9,8 @@ function Projects() {
   const imageSliderRef = useRef(null);
   const hoveredIndex = useRef(0);
 
-  const imageHeight = 310;
-  const imageGap = 0;
+  const imageHeight = 290;
+  const imageGap = 120;
   const fullSlideHeight = imageHeight + imageGap;
 
   useEffect(() => {
@@ -114,6 +114,7 @@ function Projects() {
                     className="flex flex-col  md:flex-row group justify-between items-center gap-7 md:gap-0 md:px-20 py-5 md:py-0 md:h-[305px] border-b border-white cursor-pointer"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
+                    onClick={() => (window.location.href = project.link)}
                   >
                     <div className="text-6xl md:text-8xl font-extrabold group-hover:text-gray-400 group-hover:translate-x-[-10px] transition-all duration-150">
                       {project.name}
@@ -135,18 +136,18 @@ function Projects() {
         </div>
         <div
           ref={circleRef}
-          className="fixed top-0 left-0 w-[350px] h-[400px] overflow-hidden px-5 py-20 bg-slate-400 z-[1000] pointer-events-none opacity-0 scale-[0.1] cursor-pointer"
+          className="fixed top-0 left-0 w-[350px] h-[400px] overflow-hidden px-5 py-20 bg-slate-100 z-[1000] pointer-events-none opacity-0 scale-[0.1] cursor-pointer"
         >
           <div
             ref={imageSliderRef}
             className="w-full h-full relative flex flex-col gap-[120px]"
           >
             {projectsList.map((project, idx) => (
-              <div className="w-full h-100">
+              <div className="w-full h-[290px]">
                 <img
                   key={idx}
                   src={project.image}
-                  className="w-full h-full object-cover"
+                  className="w-full h-[290px] object-cover"
                   alt={`preview-${idx}`}
                 />
               </div>
@@ -160,9 +161,9 @@ function Projects() {
 
 const projectsList = [
   {
-    name: "Project 1",
-    link: "#",
-    image: "./photo1.jpg",
+    name: "Prativa Tour & Travels",
+    link: "https://prativa-tour-and-travels.syvar.com.np/",
+    image: "./project1.png",
   },
   {
     name: "Project 2",
