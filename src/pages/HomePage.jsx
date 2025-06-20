@@ -28,7 +28,7 @@ function HomePage() {
             />
           </div>
 
-          <div className="flex gap-8 md:justify-between md:flex-row md:gap-0 flex-col ">
+          <div className="flex gap-35 md:justify-between md:flex-row md:gap-0 flex-col ">
             <div className="flex flex-col items-center md:items-start ">
               <TypeAnimation className="text-xl mb-8 max-w-lg">
                 I DEVELOP DESIGNS INTO A <br />
@@ -39,7 +39,12 @@ function HomePage() {
               <MagneticIcon>
                 <button
                   className="bg-white text-black font-extrabold py-3 px-4 shadow-[0_10px_30px_rgba(255,0,0,0.5)]  rounded outline-none cursor-pointer hover:bg-gray-200"
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() =>
+                    window.open(
+                      "https://mail.google.com/mail/?view=cm&fs=1&to=manandharsamyak7@gmail.com&su=New%20Project%20Inquiry&body=Name%3A%0AOrganization%20Name%3A%0APhone%20Number%3A%0A%0AAbout%20the%20project%3A",
+                      "_blank"
+                    )
+                  }
                 >
                   START A PROJECT
                 </button>

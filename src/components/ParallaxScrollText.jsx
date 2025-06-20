@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -7,86 +8,63 @@ import {
   useVelocity,
   useAnimationFrame,
 } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { wrap } from "@motionone/utils";
 
-export default function ParallaxScrollText({ children, baseVelocity = 100 }) {
+function ParallaxScrollText({ children, baseVelocity = 100 }) {
   const baseX = useMotionValue(0);
-  const containerRef = useRef(null);
-  const contentRef = useRef(null);
-  const [contentWidth, setContentWidth] = useState(0);
-
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400,
   });
-
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
     clamp: false,
   });
 
+  /**
+   * This is a magic wrapping for the length of the text - you
+   * have to replace for wrapping that works for you or dynamically
+   * calculate
+   */
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
   const directionFactor = useRef(1);
-
-  // Measure content width
-  useEffect(() => {
-    const updateWidth = () => {
-      if (contentRef.current) {
-        setContentWidth(contentRef.current.offsetWidth);
-      }
-    };
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
-
-  useAnimationFrame((_, delta) => {
-    if (!contentWidth) return;
-
+  useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-    const velocityBoost = velocityFactor.get();
 
-    if (velocityBoost < 0) {
+    /**
+     * This is what changes the direction of the scroll once we
+     * switch scrolling directions.
+     */
+    if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
-    } else if (velocityBoost > 0) {
+    } else if (velocityFactor.get() > 0) {
       directionFactor.current = 1;
     }
 
-    moveBy += directionFactor.current * moveBy * velocityBoost;
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    const currentX = baseX.get();
-    let nextX = currentX + moveBy;
-
-    // Reset when completely off-screen
-    if (Math.abs(nextX) >= contentWidth) {
-      nextX = 0;
-    }
-
-    baseX.set(nextX);
+    baseX.set(baseX.get() + moveBy);
   });
 
-  const x = useTransform(baseX, (v) => {
-    if (contentWidth === 0) return 0;
-    const mod = ((v % contentWidth) + contentWidth) % contentWidth;
-    return -mod;
-  });
-
+  /**
+   * The number of times to repeat the child text should be dynamically calculated
+   * based on the size of the text and viewport. Likewise, the x motion value is
+   * currently wrapped between -20 and -45% - this 25% is derived from the fact
+   * we have four children (100% / 4). This would also want deriving from the
+   * dynamically generated number of children.
+   */
   return (
-    <div
-      ref={containerRef}
-      className="overflow-hidden whitespace-nowrap w-full"
-    >
-      <motion.div
-        className="flex gap-10 text-3xl font-bold"
-        style={{ x }}
-        ref={contentRef}
-      >
-        {[...Array(3)].map((_, i) => (
-          <div key={i} className="flex items-center gap-10">
-            {children}
-          </div>
-        ))}
+    <div className="whitespace-nowrap flex flex-nowrap overflow-hidden">
+      <motion.div className="flex whitespace-nowrap flex-nowrap" style={{ x }}>
+        <span className="block mr-7">{children} </span>
+        <span className="block mr-7">{children} </span>
+        <span className="block mr-7">{children} </span>
+        <span className="block mr-7">{children} </span>
       </motion.div>
     </div>
   );
 }
+
+export default ParallaxScrollText;

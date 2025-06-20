@@ -390,26 +390,35 @@ function Skills() {
       >
         what i work with
       </motion.div>
-      <ParallaxScrollText baseVelocity={-100}>
-        <div className="flex items-center gap-2.5">
-          {skill.map((skil, index) => (
-            <div className="flex gap-2.5 items-center" key={index}>
-              <div className="text-white text-2xl inline-flex">{skil.name}</div>
-              <div className="w-6 h-6">{skil.logo}</div>
-            </div>
-          ))}
-        </div>
-      </ParallaxScrollText>
-      <ParallaxScrollText baseVelocity={100}>
-        <div className="flex items-center gap-2.5">
-          {skill.map((skil, index) => (
-            <div className="flex gap-2.5 items-center" key={index}>
-              <div className="text-white text-2xl inline-flex">{skil.name}</div>
-              <div className="w-6 h-6">{skil.logo}</div>
-            </div>
-          ))}
-        </div>
-      </ParallaxScrollText>
+      <div className="relative">
+        <ParallaxScrollText baseVelocity={-1}>
+          <div className="flex items-center gap-2.5">
+            {skill.map((skil, index) => (
+              <div className="flex gap-2.5 items-center" key={index}>
+                <div className="text-white text-2xl inline-flex">
+                  {skil.name}
+                </div>
+                <div className="w-6 h-6">{skil.logo}</div>
+              </div>
+            ))}
+          </div>
+        </ParallaxScrollText>
+        <ParallaxScrollText baseVelocity={1}>
+          <div className="flex items-center gap-2.5">
+            {skill.map((skil, index) => (
+              <div className="flex gap-2.5 items-center" key={index}>
+                <div className="text-white text-2xl inline-flex">
+                  {skil.name}
+                </div>
+                <div className="w-6 h-6">{skil.logo}</div>
+              </div>
+            ))}
+          </div>
+        </ParallaxScrollText>
+        {/* <ParallaxScrollText baseVelocity={5}>
+        <span className="text-white">TESTING</span>
+      </ParallaxScrollText> */}
+      </div>
     </div>
   );
 }

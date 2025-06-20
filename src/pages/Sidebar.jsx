@@ -6,9 +6,18 @@ function Sidebar() {
 
   const toggleSidebar = () => setOpen((prev) => !prev);
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Samyak_Manandhar_Resume_2025.pdf";
+    link.download = "Samyak_Manandhar_Resume_2025.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
-      <div className="fixed top-5 right-2 z-50 md:hidden">
+      <div className="fixed top-5 right-2 z-1000 md:hidden">
         <button onClick={toggleSidebar} className="p-2 z-50">
           <div
             className={`w-6 h-0.5 bg-white transition-transform ${
@@ -29,7 +38,7 @@ function Sidebar() {
       </div>
       <div
         className={`flex flex-col items-end gap-5 fixed top-10 right-0 px-10 h-screen 
-      pointer-events-none transition-transform duration-500 ${
+      pointer-events-none transition-transform duration-500 z-1000 ${
         open ? "translate-x-0" : "translate-x-full"
       } md:translate-x-0 md:flex md:flex-col gap-5 
         px-10`}
@@ -141,6 +150,41 @@ function Sidebar() {
           "
           >
             Contact
+          </p>
+        </div>
+        <div
+          className="group flex justify-center gap-2 items-center relative h-16 w-16 rounded-full shadow-[0_10px_25px_rgba(255,255,255,0.4)] bg-white pointer-events-auto hover:w-40 px-2 transition-all duration-500 ease-in-out cursor-pointer"
+          onClick={handleDownload}
+        >
+          <svg
+            width="35"
+            height="35"
+            viewBox="0 0 35 35"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="
+            absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 
+            opacity-100                                                
+            transition-all duration-500 ease-in-out 
+            group-hover:opacity-0 group-hover:scale-0"
+          >
+            <path
+              d="M18.959 13.1253H26.9798L18.959 5.10449V13.1253ZM8.75065 2.91699H20.4173L29.1673 11.667V29.167C29.1673 29.9405 28.86 30.6824 28.313 31.2294C27.7661 31.7764 27.0242 32.0837 26.2507 32.0837H8.75065C7.9771 32.0837 7.23524 31.7764 6.68826 31.2294C6.14128 30.6824 5.83398 29.9405 5.83398 29.167V5.83366C5.83398 4.21491 7.1319 2.91699 8.75065 2.91699ZM20.4173 29.167V27.7087C20.4173 25.7691 16.5236 24.792 14.584 24.792C12.6444 24.792 8.75065 25.7691 8.75065 27.7087V29.167H20.4173ZM14.584 17.5003C13.8104 17.5003 13.0686 17.8076 12.5216 18.3546C11.9746 18.9016 11.6673 19.6434 11.6673 20.417C11.6673 21.1905 11.9746 21.9324 12.5216 22.4794C13.0686 23.0264 13.8104 23.3337 14.584 23.3337C15.3575 23.3337 16.0994 23.0264 16.6464 22.4794C17.1934 21.9324 17.5007 21.1905 17.5007 20.417C17.5007 19.6434 17.1934 18.9016 16.6464 18.3546C16.0994 17.8076 15.3575 17.5003 14.584 17.5003Z"
+              fill="black"
+            />
+          </svg>
+
+          <p
+            className="
+            font-bold
+            opacity-0 invisible pointer-events-none                       
+            max-w-0 overflow-hidden                                 
+            transition-all duration-500 ease-in-out                 
+            group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto 
+            group-hover:max-w-full group-hover:scale-100                
+          "
+          >
+            Download CV
           </p>
         </div>
       </div>
