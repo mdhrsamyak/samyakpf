@@ -6,7 +6,7 @@ import { scrollToSection } from "../components/ScrollTo";
 function HomePage() {
   return (
     <div className="flex min-h-screen" id="home">
-      <main className="flex-1 bg-[#1A1110] text-white py-[10vh] ">
+      <main className="flex-1 bg-[#181F20] text-white py-[10vh] ">
         <div className="flex flex-col justify-between md:px-36 px-5 h-full">
           {/* <h1 className="text-9xl font-bold">
               I AM <br />
