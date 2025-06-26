@@ -6,7 +6,7 @@ function Contact() {
   return (
     <>
       <div
-        className="flex flex-col py-[10vh] px-5 md:px-36 bg-black text-white"
+        className="flex flex-col py-[10vh] px-5 md:px-36 bg-[#1A1110] text-white"
         id="contact"
       >
         <div className="text-6xl md:text-9xl font-extrabold">
