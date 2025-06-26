@@ -379,7 +379,7 @@ function Skills() {
 
   return (
     <div
-      className=" flex flex-col gap-5 py-[10vh] px-5 md:px-36 bg-black"
+      className=" flex flex-col gap-5 py-[10vh] px-5 md:px-36 bg-[#1A1110]"
       id="skill"
     >
       <motion.div

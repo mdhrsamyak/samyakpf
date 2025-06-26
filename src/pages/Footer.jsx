@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="relative overflow-hidden bg-black text-white font-extrabold">
+    <div className="relative overflow-hidden bg-[#1A1110] text-white font-extrabold">
       <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start  md:px-20 py-10 h-full">
         <div>Version: 2025</div>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
