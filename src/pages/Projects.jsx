@@ -96,7 +96,7 @@ function Projects() {
         onMouseMove={handleMouseMove}
         id="project"
       >
-        <div className="flex-1 bg-[#181F20] text-white py-[10vh]">
+        <div className="flex-1 bg-black text-white py-[10vh]">
           <div className="flex flex-col md:px-36 px-5 h-full">
             <motion.div
               ref={ref}
