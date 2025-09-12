@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
-        {/* <SplashCursor /> */}
+        <SplashCursor />
         <Sidebar />
         <HomePage />
         <Projects />
