@@ -147,7 +147,7 @@ function Projects() {
                 <img
                   key={idx}
                   src={project.image}
-                  className="w-full h-[290px] object-cover"
+                  className="w-full h-[290px] object-contain"
                   alt={`preview-${idx}`}
                 />
                 <div className="flex gap-2 mt-3 items-center justify-around">
