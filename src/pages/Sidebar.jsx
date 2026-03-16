@@ -8,8 +8,8 @@ function Sidebar() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Samyak_Manandhar_Resume_2025.pdf";
-    link.download = "Samyak_Manandhar_Resume_2025.pdf";
+    link.href = "/Resume_2026.pdf";
+    link.download = "Resume_2026.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
